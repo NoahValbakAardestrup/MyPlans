@@ -1,5 +1,6 @@
 package com.example.noahvalbakaardestrup.myplans;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void f(){
+        Intent I = new Intent(this, CreateActivity.class);
         String textval = "oi oi";
+        startActivity(I);
         textTitle.setText(textval);
     }
 }
