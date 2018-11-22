@@ -1,7 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,34 +19,80 @@
             <RelativeLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:background="@color/colorPrimary"
-                android:layout_height="68dp">
+                android:layout_height="68dp"
+                android:background="@color/colorPrimary">
 
 
                 <ImageView
                     android:id="@+id/hamburgerButton"
                     android:layout_width="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_sort_by_size"
-                    />
+                    android:layout_margin="10dp"
+                    android:src="@android:drawable/ic_menu_sort_by_size" />
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="My Plans"
 
-                    android:textColor="@android:color/white"
-                    android:layout_height="wrap_content" />
+                    android:text="My Plans"
+                    android:textColor="@android:color/white" />
             </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar" />
+
+            <Button
+                android:id="@+id/buttonCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="hgjhjh" />
         </RelativeLayout>
 
 
-<Button android:id="@+id/buttonCreate"
-    android:layout_width="match_parent"
-    android:text="hgjhjh"
-    android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            android:clickable="true"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hej" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hej" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hej" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hej" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hej" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hej" />
+
+        </LinearLayout>
 
     </android.support.v4.widget.DrawerLayout>
 
