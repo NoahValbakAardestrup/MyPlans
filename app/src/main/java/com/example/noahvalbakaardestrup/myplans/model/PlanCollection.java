@@ -1,6 +1,6 @@
-package com.example.noahvalbakaardestrup.myplans.model;
+package com.trackunit.noahvalbakaardestrup.myplans.model;
 
-import com.example.noahvalbakaardestrup.myplans.StorageHelper;
+import com.trackunit.noahvalbakaardestrup.myplans.StorageHelper;
 
 import java.util.ArrayList;
 import java.util.List;

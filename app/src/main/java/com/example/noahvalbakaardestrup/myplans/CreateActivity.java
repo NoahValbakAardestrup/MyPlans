@@ -1,4 +1,4 @@
-package com.example.noahvalbakaardestrup.myplans;
+package com.trackunit.noahvalbakaardestrup.myplans;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +10,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.noahvalbakaardestrup.myplans.model.PlanCollection;
-import com.example.noahvalbakaardestrup.myplans.model.PlanItem;
+import com.trackunit.noahvalbakaardestrup.myplans.model.PlanCollection;
+import com.trackunit.noahvalbakaardestrup.myplans.model.PlanItem;
 
 public class CreateActivity extends AppCompatActivity {
 

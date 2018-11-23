@@ -1,4 +1,4 @@
-package com.example.noahvalbakaardestrup.myplans.model;
+package com.trackunit.noahvalbakaardestrup.myplans.model;
 
 public class PlanItem {
     private String title;

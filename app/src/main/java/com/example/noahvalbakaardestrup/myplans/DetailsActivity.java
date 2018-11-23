@@ -1,4 +1,4 @@
-package com.example.noahvalbakaardestrup.myplans;
+package com.trackunit.noahvalbakaardestrup.myplans;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.noahvalbakaardestrup.myplans.model.PlanItem;
+import com.trackunit.noahvalbakaardestrup.myplans.model.PlanItem;
 import com.google.gson.Gson;
 
 public class DetailsActivity extends AppCompatActivity {

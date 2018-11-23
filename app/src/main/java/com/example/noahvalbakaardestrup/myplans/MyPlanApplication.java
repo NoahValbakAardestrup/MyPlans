@@ -1,4 +1,4 @@
-package com.example.noahvalbakaardestrup.myplans;
+package com.trackunit.noahvalbakaardestrup.myplans;
 
 import android.app.Application;
 

@@ -1,9 +1,9 @@
-package com.example.noahvalbakaardestrup.myplans;
+package com.trackunit.noahvalbakaardestrup.myplans;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.example.noahvalbakaardestrup.myplans.model.PlanCollection;
+import com.trackunit.noahvalbakaardestrup.myplans.model.PlanCollection;
 import com.google.gson.Gson;
 
 public class StorageHelper {

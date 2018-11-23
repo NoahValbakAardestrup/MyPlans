@@ -29,29 +29,26 @@
                     android:id="@+id/hamburgerButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_sort_by_size"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    />
+                    android:layout_marginTop="10dp"
+                    android:src="@android:drawable/ic_menu_sort_by_size" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textSize="20dp"
                     android:text="My Plans"
                     android:textColor="@android:color/white"
-                    />
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/CreateButton"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/ic_actioncreate"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    />
+                    android:src="@drawable/ic_actioncreate" />
 
             </RelativeLayout>
 
@@ -73,35 +70,30 @@
             android:clickable="true"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hej" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hej" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hej" />
+                <TextView
+                    android:id="@+id/made"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="made by" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hej" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/made"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="16dp"
+                    android:text="Noah Valbak Aardestrup" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hej" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hej" />
 
         </LinearLayout>
 
