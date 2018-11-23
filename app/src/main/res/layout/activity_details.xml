@@ -28,6 +28,16 @@
             android:text="Plan Details"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/shareButton"
+            android:src="@android:drawable/ic_menu_share"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <TextView

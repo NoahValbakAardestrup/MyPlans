@@ -1,5 +1,6 @@
 package com.example.noahvalbakaardestrup.myplans;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +22,8 @@ public class DetailsActivity extends AppCompatActivity {
     TextView note;
     ImageView backButton;
 
+    ImageView shareButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,8 @@ public class DetailsActivity extends AppCompatActivity {
         starts = findViewById(R.id.Starts);
         location = findViewById(R.id.Location);
         note = findViewById(R.id.Note);
+
+
 
         seekbar = findViewById(R.id.seekBar);
         importance = findViewById(R.id.Importance);
@@ -47,13 +52,34 @@ public class DetailsActivity extends AppCompatActivity {
         // Set fields
         String dataReceived = getIntent().getStringExtra("PLANDATA");
 
-        PlanItem item = new Gson().fromJson(dataReceived, PlanItem.class);
+        final PlanItem item = new Gson().fromJson(dataReceived, PlanItem.class);
 
         title.setText(item.getTitle());
         note.setText(item.getNote());
         location.setText(item.getLocation());
         seekbar.setProgress(item.getImportance());
         starts.setText(item.getStarts());
+
+        shareButton = findViewById(R.id.shareButton);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+
+                StringBuilder sb = new StringBuilder();
+                sb.append("Title: "+ item.getTitle()).append("\r\n");
+                sb.append("Importance: "+ item.getImportance()).append("\r\n");
+                sb.append("Starts: "+ item.getStarts()).append("\r\n");
+                sb.append("Location: "+ item.getLocation()).append("\r\n");
+                sb.append("Note: "+ item.getNote()).append("\r\n");
+
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, item.getTitle());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, sb.toString());
+                startActivity(Intent.createChooser(sharingIntent, ""));
+            }
+        });
 
     }
 }
