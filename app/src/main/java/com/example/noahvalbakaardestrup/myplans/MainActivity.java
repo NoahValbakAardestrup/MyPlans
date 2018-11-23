@@ -13,7 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.example.noahvalbakaardestrup.myplans.model.PlanCollection;
+import com.example.noahvalbakaardestrup.myplans.model.PlanItem;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private PlanAdapter adapter;
+    private RecyclerView list;
+
+    private PlanCollection planCollection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                f();
+                openCreatePlan();
             }
         });
 
@@ -49,15 +57,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Adapter
-        adapter = new PlanAdapter();
-        RecyclerView recyclerView = findViewById(R.id.list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        adapter = new PlanAdapter(new ArrayList<PlanItem>());
+        list = findViewById(R.id.list);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(adapter);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         loadPlan();
     }
 
-    private void f() {
+    private void openCreatePlan() {
         Intent I = new Intent(this, CreateActivity.class);
         String textval = "oi oi";
         startActivity(I);
@@ -65,17 +79,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadPlan() {
 
-        List<PlanItem> items = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            items.add(new PlanItem("Item " + i));
-        }
-        adapter.setData(items);
+        planCollection = StorageHelper.readPlanCollection();
+        adapter.setData(planCollection.getPlans());
     }
 
     // Holder of data
     private class PlanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         List<PlanItem> items;
+
+        public PlanAdapter(List<PlanItem> items) {
+            this.items = items;
+        }
 
         @NonNull
         @Override
@@ -84,11 +99,45 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
 
-            PlanItem item = items.get(i);
+            final PlanItem item = items.get(i);
             PlanItemVH itemVH = (PlanItemVH) viewHolder;
-            itemVH.name.setText(item.name);
+            itemVH.name.setText(item.getTitle());
+            itemVH.importance.setProgress(item.getImportance());
+            itemVH.importance.setEnabled(false);
+            itemVH.doneButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Locate and remove plan from list
+                    if(planCollection.removePlan(item)) {
+
+                        // Save modified list
+                        StorageHelper.savePlanCollection(planCollection);
+
+                        // Signal to update UI on list
+                        notifyDataSetChanged();
+                    }
+                }
+            });
+
+
+
+            // clicking on entire element
+            itemVH.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Package planitem
+                    String dataToSend = new Gson().toJson(item);
+
+                     // Go to Details
+                    Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                    intent.putExtra("PLANDATA", dataToSend);
+                    startActivity(intent);
+                }
+            });
+
+
         }
 
         @Override
@@ -105,18 +154,16 @@ public class MainActivity extends AppCompatActivity {
     public class PlanItemVH extends RecyclerView.ViewHolder {
 
         private TextView name;
+        private SeekBar importance;
+        private Button doneButton;
 
         public PlanItemVH(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
+            importance = itemView.findViewById(R.id.seekBar);
+            doneButton = itemView.findViewById(R.id.buttonDone);
         }
     }
 
-    public class PlanItem {
-        private String name;
 
-        public PlanItem(String name) {
-            this.name = name;
-        }
-    }
 }

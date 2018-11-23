@@ -21,6 +21,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:id="@+id/buttonDone"
+        android:text="Done"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
         />
 
     <SeekBar
