@@ -53,7 +53,7 @@
                 android:text="hgjhjh" />
         </RelativeLayout>
 
-
+        <!-- Left menu design -->
         <LinearLayout
             android:layout_width="320dp"
             android:layout_height="match_parent"

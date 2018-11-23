@@ -3,6 +3,8 @@ package com.example.noahvalbakaardestrup.myplans;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -10,12 +12,12 @@ public class CreateActivity extends AppCompatActivity {
 
     SeekBar seekbar;
     TextView importance;
+    ImageView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
-
 
         seekbar = findViewById(R.id.seekBar);
         importance = findViewById(R.id.Importance);
@@ -42,5 +44,15 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         });
+
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
     }
 }
